@@ -51,11 +51,11 @@ function create (table, cols, vals) {
   });
 }
 
-function update (table, colVals, condition) {
+function update (table, colValsObj, condition) {
   return new Promise((resolve, reject) => {
     const query = 
     `UPDATE ${table}
-      SET ${objToSql(colVals)}
+      SET ${objToSql(colValsObj)}
       WHERE ${condition}`;
     connection.query(query, (err, results, fields) => {
       if(err) {
