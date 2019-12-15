@@ -1,11 +1,9 @@
 <h1>Burgers!</h1>
 
-<h2>Burgers that are not sleepy!</h2>
-
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{this.devoured}}
+      <li>{{this.burger_name}}</li>
     {{/unless}}
   {{/each}}
 </ul>

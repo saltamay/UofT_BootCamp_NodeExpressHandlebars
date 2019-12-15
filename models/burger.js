@@ -1,9 +1,9 @@
 // Import the ORM to create functions that will interact with the database.
-const { all, create, update, remove } = require("../config/orm.js");
+const orm = require("../config/orm.js");
 
 async function all() {
   try {
-    const results = await all('burger');
+    const results = await orm.all('burgers');
 
     if (Array.isArray(results) && results.length) {
       return results;
