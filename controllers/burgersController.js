@@ -13,8 +13,9 @@ router.get("/", async (req, res) => {
     };
     if (Array.isArray(results) && results.length) {
       res.render("index", hbsObject);
+    } else {
+      return res.status(404).end();
     }
-    return res.status(404).end();
   } catch (error) {
     if (error) {
       console.log(error);

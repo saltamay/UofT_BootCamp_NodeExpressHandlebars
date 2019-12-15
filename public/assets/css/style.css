@@ -1,1 +1,15 @@
-/* add your css here */
+body {
+  background: #F8F8F8;
+}
+
+/*** Navigation ***/
+.navbar {
+  background: rgb(0, 0, 0)!important;
+  padding: 0!important;
+}
+
+.navbar a {
+  background-color: #ffd200;
+  padding-right: 0.5rem;
+}
+
