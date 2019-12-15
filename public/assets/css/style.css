@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
 body {
+  font-size: 16px;
   background: #F8F8F8;
+  font-family: 'Raleway', sans-serif;
 }
 
 /*** Navigation ***/
@@ -12,4 +16,16 @@ body {
   background-color: #ffd200;
   padding-right: 0.5rem;
 }
+
+#burgers {
+  margin-top: 90px;
+}
+
+#burgers h1 {
+  font-weight: 900;
+}
+
+/* #burgers .burger-card {
+  background-color: #F8F8F8;
+} */
 
