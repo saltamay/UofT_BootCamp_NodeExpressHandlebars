@@ -1,15 +1,10 @@
 // Import the ORM to create functions that will interact with the database.
 const orm = require("../config/orm.js");
 
-async function all() {
+async function getlAllBurger() {
   try {
     const results = await orm.all('burgers');
-
-    if (Array.isArray(results) && results.length) {
-      return results;
-    } else {
-      throw new Error('Request failed');
-    }
+    return results;
   } catch (error) {
     if(error) {
       console.log(error);
@@ -18,17 +13,10 @@ async function all() {
   }
 }
 
-async function create(cols, vals) {
+async function createBurger(cols, vals) {
   try {
-    const results = await orm.create('burgers', cols, vals);
-
-    if (Array.isArray(results) && results.length) {
-      console.log(results);
-      return results;
-    }
-    // } else {
-    //   throw new Error('Request failed');
-    // }
+    const result = await orm.create('burgers', cols, vals);
+    return result;
   } catch (error) {
     if(error) {
       console.log(error);
@@ -37,13 +25,10 @@ async function create(cols, vals) {
   }
 }
 
-async function update(colValsObj, condition) {
+async function updateBurger(colValsObj, condition) {
   try {
-    const results = await orm.update('burgers', colValsObj, condition);
-
-    // if (Array.isArray(results) && results.length) {
-    //   return results;
-    // } 
+    const result = await orm.update('burgers', colValsObj, condition);
+    return result;
   } catch (error) {
     if(error) {
       console.log(error);
@@ -52,15 +37,10 @@ async function update(colValsObj, condition) {
   }
 }
 
-async function remove(condition) {
+async function removeBurger(condition) {
   try {
-    const results = await orm.remove('burgers', condition);
-    console.log(results)
-    if (results.affectedRows !== 0) {
-      return results;
-    } else {
-      throw new Error('Request Failed');
-    }
+    const result = await orm.remove('burgers', condition);
+    return result;
   } catch (error) {
     if(error) {
       console.log(error);
@@ -70,8 +50,8 @@ async function remove(condition) {
 }
 
 module.exports = {
-  all,
-  create,
-  update,
-  remove
+  getlAllBurger,
+  createBurger,
+  updateBurger,
+  removeBurger
 }

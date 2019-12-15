@@ -37,40 +37,34 @@ const orm = {
   },
   create: function(table, cols, vals) {
     return new Promise((resolve, reject) => {
-      console.log(typeof vals.toString());
       const query = 
-      `INSERT INTO ${table}
-        (${cols.toString()}) 
-        VALUES ("${vals.toString()}")`;
-      connection.query(query, (err, results, fields) => {
+      `INSERT INTO ${table} (${cols.toString()}) VALUES ("${vals.toString()}")`;
+      connection.query(query, (err, result, fields) => {
         if(err) {
           console.log(err);
           reject(err);
         }
-        resolve(results);
+        resolve(result);
       });
     });
   },
   update: function(table, colValsObj, condition) {
     return new Promise((resolve, reject) => {
-      console.log(this.objToSql(colValsObj));
       const query = 
       `UPDATE ${table} SET ${this.objToSql(colValsObj)} WHERE ${condition}`;
-        console.log(query)
-      connection.query(query, (err, results, fields) => {
+      connection.query(query, (err, result, fields) => {
         if(err) {
           console.log(err);
           reject(err);
         }
-        resolve(results);
+        resolve(result);
       });
     });
   },
   remove: function(table, condition) {
     return new Promise((resolve, reject) => {
       const query = 
-      `DELETE FROM ${table}
-        WHERE ${condition}`;
+      `DELETE FROM ${table} WHERE ${condition}`;
       connection.query(query, (err, results, fields) => {
         if(err) {
           console.log(err);
