@@ -8,7 +8,7 @@ async function all() {
     if (Array.isArray(results) && results.length) {
       return results;
     } else {
-      throw err ('Request failed');
+      throw new Error('Request failed');
     }
   } catch (error) {
     if(error) {
@@ -20,13 +20,15 @@ async function all() {
 
 async function create(cols, vals) {
   try {
-    const results = await create('burger', cols, vals);
+    const results = await orm.create('burgers', cols, vals);
 
     if (Array.isArray(results) && results.length) {
+      console.log(results);
       return results;
-    } else {
-      throw err ('Request failed');
     }
+    // } else {
+    //   throw new Error('Request failed');
+    // }
   } catch (error) {
     if(error) {
       console.log(error);
@@ -37,13 +39,11 @@ async function create(cols, vals) {
 
 async function update(colValsObj, condition) {
   try {
-    const results = await create('burger', colValsObj, condition);
+    const results = await orm.update('burgers', colValsObj, condition);
 
-    if (Array.isArray(results) && results.length) {
-      return results;
-    } else {
-      throw err ('Request failed');
-    }
+    // if (Array.isArray(results) && results.length) {
+    //   return results;
+    // } 
   } catch (error) {
     if(error) {
       console.log(error);
@@ -54,12 +54,12 @@ async function update(colValsObj, condition) {
 
 async function remove(condition) {
   try {
-    const results = await create('burger', condition);
-
-    if (Array.isArray(results) && results.length) {
+    const results = await orm.remove('burgers', condition);
+    console.log(results)
+    if (results.affectedRows !== 0) {
       return results;
     } else {
-      throw err ('Request failed');
+      throw new Error('Request Failed');
     }
   } catch (error) {
     if(error) {

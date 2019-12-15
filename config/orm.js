@@ -3,24 +3,25 @@ var connection = require("../config/connection.js");
 const orm = {
   // Helper function to convert object key/value pairs to SQL syntax
   objToSql: function(ob) {
-    var arr = [];
+    const arr = [];
   
     // loop through the keys and push the key/value as a string int arr
-    for (const [key, value] in Object.entries(ob)) {
+    for (let [key, value] of Object.entries(ob)) {
       // var value = ob[key];
       // check to skip hidden properties
-      if (Object.hasOwnProperty(key)) {
-        // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
-        }
-        // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-        // e.g. {sleepy: true} => ["sleepy=true"]
-        arr.push = `${key}=${value}`;
+      console.log(`${key} and ${value}`)
+      // if (Object.hasOwnProperty(key)) {
+      //   // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+      // } 
+      if (typeof value === "string") {
+        value = "'" + value + "'";
       }
-      // translate array of strings to a single comma-separated string
-      return arr.toString();
+      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+      // e.g. {sleepy: true} => ["sleepy=true"]
+      arr.push(`${key}=${value}`);
     }
+    console.log(arr);
+    return arr.toString();
   },
   all: function(table) {
     return new Promise((resolve, reject) => {
@@ -36,10 +37,11 @@ const orm = {
   },
   create: function(table, cols, vals) {
     return new Promise((resolve, reject) => {
+      console.log(typeof vals.toString());
       const query = 
       `INSERT INTO ${table}
         (${cols.toString()}) 
-        VALUES (${vals.toString()})`;
+        VALUES ("${vals.toString()}")`;
       connection.query(query, (err, results, fields) => {
         if(err) {
           console.log(err);
@@ -51,10 +53,10 @@ const orm = {
   },
   update: function(table, colValsObj, condition) {
     return new Promise((resolve, reject) => {
+      console.log(this.objToSql(colValsObj));
       const query = 
-      `UPDATE ${table}
-        SET ${objToSql(colValsObj)}
-        WHERE ${condition}`;
+      `UPDATE ${table} SET ${this.objToSql(colValsObj)} WHERE ${condition}`;
+        console.log(query)
       connection.query(query, (err, results, fields) => {
         if(err) {
           console.log(err);
