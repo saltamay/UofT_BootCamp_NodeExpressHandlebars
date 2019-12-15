@@ -68,3 +68,10 @@ async function remove(condition) {
     }
   }
 }
+
+module.exports = {
+  all,
+  create,
+  update,
+  remove
+}

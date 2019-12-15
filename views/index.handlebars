@@ -1,1 +1,11 @@
-<!-- Placeholder ==>
+<h1>Burgers!</h1>
+
+<h2>Burgers that are not sleepy!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{this.devoured}}
+    {{/unless}}
+  {{/each}}
+</ul>
