@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const results = await getlAllBurger();
-    var hbsObject = {
+    const hbsObject = {
       burgers: results
     };
     if (Array.isArray(results) && results.length) {

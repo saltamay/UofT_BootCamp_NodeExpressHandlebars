@@ -1,67 +1,27 @@
-<!--- Home Section --->
-<div id="home">
-
-  <!--- Navigation --->
-  <nav class="navbar fixed-top d-flex justify-content-center">
-    <a class="navbar-brand" href="#">
-      <img src="/assets/images/logo.png" width="75" height="80" class="d-inline-block align-top" alt="">
-      <img src="/assets/images/logo2.png" width="145" height="80" class="d-inline-block align-top" alt="">
-      </a>
-  </nav>
-  <!-- End Navigation --->
-
-  <!--- Landing Page Sectipn --->
-  <div class="container">
-    <div class="row">
-
-      <!--- Burgers --->
-      <div id="burgers" class="col-12">
-        {{!-- <img src="./assets/images/banner.png" alt="" srcset=""> --}}
-        <h1 class="text-center mt-5">Signature Choices</h1>
-        <div class="row">
-          {{#each burgers}}
-            <div class="col-4 mt-5">
-              <div class="card text-dark burger-card">
-                <img src="{{this.img_url}}" class="card-img ml-5 mt-5 mb-4" alt="..." style="width: 75%;">
-                <div class="card-img-overlay">
-                  <h6 class="card-title text-right">
-                    <span class="text-danger"><i class="fas fa-heart"></i></span> 
-                    {{this.num_of_likes}} Likes
-                  </h6>
-                </div>
-                <p class="card-text text-center mb-4">{{this.burger_info}}</p>
-                <div class="buttons mb-5 d-flex justify-content-center">
-                  <button class="btn btn-warning btn-large pr-4 pl-4 mr-2 text-white">Add</button>
-                  {{!-- <button class="btn btn-warning">Devaour</button> --}}
-                </div>
-              </div>
+<div class="container">
+  <h1 class="text-center mt-5 mb-5">Signature Choices</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+      {{#each burgers}}
+        <div class="col md-4">
+          <div class="card mb-4">
+            <img src="{{this.img_url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              {{!-- <h5 class="card-title">Card title</h5> --}}
+              <p class="card-text" style="font-size: 13px;">{{this.burger_info}}</p>
             </div>
-          {{/each}}
+            <div class="card-button d-flex justify-content-center mb-4">
+              <button 
+              data-id="{{this.id}}" 
+              onclick="handleClick.call(this)" class="btn btn-warning text-black text-center pl-4 pr-4">
+                <i class="fas fa-hamburger"></i> Add
+              </button>
+            </div>
+            <div class="card-footer text-right">
+              <span class="text-danger"><i class="fas fa-heart"></i></span> {{this.num_of_likes}} Likes
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- End Burgers --->
-
-      <!--- Order Cart Section --->
-      <div class="col-4"></div>
-      <!--- End Orger Cart Section --->
-
-    </div>
+      {{/each}}
   </div>
-  <!--- End Landing Page Section --->
 </div>
 
-
-{{!-- <h1>Burgers!</h1>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      <li>
-        <figure>
-          <img src="/assets/images/burger.png" alt="">
-          <figcaption>{{this.burger_name}}</figcaption>
-        </figure>
-      </li>
-    {{/unless}}
-  {{/each}}
-</ul> --}}

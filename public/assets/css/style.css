@@ -17,7 +17,7 @@ body {
   padding-right: 0.5rem;
 }
 
-#burgers {
+.container {
   margin-top: 90px;
 }
 
@@ -25,6 +25,9 @@ body {
   font-weight: 900;
 }
 
+/* .card {
+  height: 590px!important;
+} */
 /* #burgers .burger-card {
   background-color: #F8F8F8;
 } */
