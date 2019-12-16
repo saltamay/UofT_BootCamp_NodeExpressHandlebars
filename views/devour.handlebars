@@ -6,26 +6,7 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
         {{#each burgers}}
           {{#unless devoured}}
-          <div class="col md-4">
-            <div class="card mb-4">
-              <img src="{{this.img_url}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                {{!-- <h5 class="card-title">Card title</h5> --}}
-                <p class="card-text" style="font-size: 13px;">{{this.burger_info}}</p>
-              </div>
-              <div class="card-button d-flex justify-content-center mb-4">
-                <a
-                href="/devour" 
-                data-id="{{this.id}}" 
-                onclick="handleDevourAdd.call(this)" class="btn btn-warning text-black text-center pl-4 pr-4">
-                  <i class="fas fa-hamburger"></i> Add
-                </a>
-              </div>
-              <div class="card-footer text-right">
-                <span class="text-danger"><i class="fas fa-heart"></i></span> {{this.num_of_likes}} Likes
-              </div>
-            </div>
-          </div>
+            {{> burger this}}
           {{/unless}}
         {{/each}}
       </div>
@@ -35,36 +16,11 @@
       <div class="list-group devour">
         {{#each burgers}}
           {{#if devoured}}
-            <div class="card mb-1" style="width: 95%">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="{{this.img_url}}" class="card-img" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{this.burger_name}}</h5>
-                    <p class="card-text">{{this.burger_info}}</p>
-                    {{!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
-                    <div class="card-button mb-4">
-                      <a
-                      href="/devour"
-                      data-id="{{this.id}}" 
-                      onclick="handleDevour.call(this)" class="btn btn-dark text-center pl-3 pr-3">
-                        <i class="fas fa-hamburger"></i> Devour it!
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {{> devour this}}
           {{/if}}
         {{/each}}
         <div class="group-button d-flex justify-content-center mt-4">
-          <a
-          href="/devour" 
-          class="btn btn-warning btn-lg"
-          onclick="handleDevourAll()"
-          >Devour All!</a>
+          <a href="/devour" class="btn btn-warning btn-lg" onclick="handleDevourAll()">Devour All!</a>
         </div>
       </div>
     </div>
