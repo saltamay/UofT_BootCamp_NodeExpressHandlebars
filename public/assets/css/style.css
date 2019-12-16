@@ -25,3 +25,13 @@ body {
 #burgers h1 {
   font-weight: 900;
 }
+
+.modal {
+  left: 33.33%!important;
+}
+
+@media screen and (max-width: 576px) {
+  .modal {
+    left: 0!important;
+  }
+}
