@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <h1 class="text-center mt-5 mb-5">Signature Choices</h1>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+        {{#each burgers}}
+          <div class="col md-4">
+            <div class="card mb-4">
+              <img src="{{this.img_url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                {{!-- <h5 class="card-title">Card title</h5> --}}
+                <p class="card-text" style="font-size: 13px;">{{this.burger_info}}</p>
+              </div>
+              <div class="card-button d-flex justify-content-center mb-4">
+                <button 
+                data-id="{{this.id}}" 
+                onclick="handleClick.call(this)" class="btn btn-warning text-black text-center pl-4 pr-4">
+                  <i class="fas fa-hamburger"></i> Add
+                </button>
+              </div>
+              <div class="card-footer text-right">
+                <span class="text-danger"><i class="fas fa-heart"></i></span> {{this.num_of_likes}} Likes
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-4">
+      <h1 class="text-center mt-5 mb-5">Devour List</h1>
+      <div class="list-group">
+        {{#each burgers}}
+          {{#if devoured}}
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{this.img_url}}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{this.burger_name}}</h5>
+                    <p class="card-text">{{this.burger_info}}</p>
+                    {{!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
