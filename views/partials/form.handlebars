@@ -1,0 +1,107 @@
+<div class="container pt-5">
+  <form>
+    <h1 class="text-center">On the Grill</h1>
+  <div class="form-group row">
+    
+    <div class="col-md-4">
+        <div class="form-check">
+          <label class="form-check-label" for="gridCheck1">
+            <div class="card" style="width: 18rem;">
+            <img src="./assets/images/byob-veggie.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            </div>
+          </label>
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+        </div>
+    </div>
+  </div>
+  <h1 class="text-center mt-5">Gourmet Toppings</h1>
+  <div class="form-group row">
+    <div class="col-md-6">
+      <h2 class="text-center mt-4">Premium Toppings</h2>
+      <div class="row">
+        <div class="col-md-4">
+        {{#each premiums.firstRow}}
+          {{> toppings this}}        
+        {{/each}}
+      </div>
+      <div class="col-md-4">
+        {{#each premiums.secondRow}}
+          {{> toppings this}}        
+        {{/each}}
+      </div>
+      <div class="col-md-4">
+        {{#each premiums.thirdRow}}
+          {{> toppings this}}        
+        {{/each}}
+      </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2 class="text-center mt-4">Toppings</h2>
+      <div class="row">
+        <div class="col-md-4">
+        {{#each toppings.firstRow}}
+          {{> toppings this}}        
+        {{/each}}
+      </div>
+      <div class="col-md-4">
+        {{#each toppings.secondRow}}
+          {{> toppings this}}        
+        {{/each}}
+      </div>
+      <div class="col-md-4">
+        {{#each toppings.thirdRow}}
+          {{> toppings this}}        
+        {{/each}}
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-button d-flex justify-content-center mt-5">
+    <button type="submit" class="btn btn-warning btn-large text-white">Devour!</button>
+  </div>
+  </form>
+</div>
+
+    {{!-- <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div> --}}
+  {{!-- <button type="submit" class="btn btn-primary">Sign in</button> --}}

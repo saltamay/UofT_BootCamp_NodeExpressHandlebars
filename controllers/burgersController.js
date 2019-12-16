@@ -41,6 +41,24 @@ router.get('/devour', async (req, res) => {
       throw error;
     }
   } 
+});
+
+router.get('/byob', (req, res) => {
+  const premiumToppings = {
+    firstRow: ['Bacon', 'Pepper Jack', 'Swiss'],
+    secondRow: ['Cheddar', 'Goat Cheese', 'Ginger Glazed Pineapple'],
+    thirdRow: ['Sauteed Mushrooms', 'Cheese Curd']
+  };
+
+  const toppings = {
+    firstRow: ['Tomatoes', 'Lettuce', 'Cucumber', 'Pickles', 'Guacamole', 'Hot Peppers', 'Red Onions', 'Cajun', 'Onions'],
+    secondRow: ['Green Olives', 'Dijon Mustard', 'Honey Mustard', 'Yellow Mustard', 'Ketchup', 'BBQ Sauce', 'Hot Sauce', 'Jalapeno', 'Sour Cream'],  
+    thirdRow: ['Signature Sauce', 'Gourmet Dill Pickle Relish', 'Hot Pepper Relish', 'Mango Chutney Relish', 'Sweet Relish', 'Garlic Mayo', 'Wasabi Mayo']
+  }
+  res.render('byob', {
+    premiums: premiumToppings,
+    toppings: toppings
+  });
 })
 
 router.post('/api/burgers', async (req, res) => {
