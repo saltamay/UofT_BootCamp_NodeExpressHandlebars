@@ -1,7 +1,7 @@
 // Import the ORM to create functions that will interact with the database.
 const orm = require("../config/orm.js");
 
-async function getlAllBurger() {
+async function getlAllBurgers() {
   try {
     const results = await orm.all('burgers');
     return results;
@@ -50,7 +50,7 @@ async function removeBurger(condition) {
 }
 
 module.exports = {
-  getlAllBurger,
+  getlAllBurgers,
   createBurger,
   updateBurger,
   removeBurger

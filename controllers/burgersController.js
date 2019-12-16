@@ -1,4 +1,4 @@
-const { getlAllBurger, createBurger, updateBurger, removeBurger } = require('../models/burger');
+const { getlAllBurgers, createBurger, updateBurger, removeBurger } = require('../models/burger');
 
 const express = require("express");
 
@@ -7,7 +7,7 @@ const router = express.Router();
 // Create all  routes and set up logic within those routes where required.
 router.get("/", async (req, res) => {
   try {
-    const results = await getlAllBurger();
+    const results = await getlAllBurgers();
     const hbsObject = {
       burgers: results
     };
@@ -23,6 +23,25 @@ router.get("/", async (req, res) => {
     }
   } 
 });
+
+router.get('/devour', async (req, res) => {
+  try {
+    const results = await getlAllBurgers();
+    const hbsObject = {
+      burgers: results
+    };
+    if (Array.isArray(results) && results.length) {
+      res.render("devour", hbsObject);
+    } else {
+      return res.status(404).end();
+    }
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      throw error;
+    }
+  } 
+})
 
 router.post('/api/burgers', async (req, res) => {
   try {
@@ -45,10 +64,10 @@ router.post('/api/burgers', async (req, res) => {
 router.put('/api/burgers/:id', async (req, res) => {
   try {
     const condition = "id = " + req.params.id;
-    console.log(req.body.name)
-    const result = await updateBurger({ burger_name: req.body.name }, condition);
+    console.log(req.body);
+    const result = await updateBurger(req.body, condition);
 
-    if (result.changedRows === 0) {
+    if (result.affectedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     }
