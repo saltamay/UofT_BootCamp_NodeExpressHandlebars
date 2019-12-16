@@ -10,11 +10,12 @@
               <p class="card-text" style="font-size: 13px;">{{this.burger_info}}</p>
             </div>
             <div class="card-button d-flex justify-content-center mb-4">
-              <button 
+              <a 
+              href="/devour"
               data-id="{{this.id}}" 
               onclick="handleClick.call(this)" class="btn btn-warning text-black text-center pl-4 pr-4">
                 <i class="fas fa-hamburger"></i> Add
-              </button>
+              </a>
             </div>
             <div class="card-footer text-right">
               <span class="text-danger"><i class="fas fa-heart"></i></span> {{this.num_of_likes}} Likes
