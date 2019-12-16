@@ -90,3 +90,11 @@ async function handleDevourAll() {
     }
   }
 }
+
+function showModal() {
+  $('#byobModal').modal('toggle');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(showModal, 3000);
+})
