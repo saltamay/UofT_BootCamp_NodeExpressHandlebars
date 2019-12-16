@@ -17,18 +17,11 @@ body {
   padding-right: 0.5rem;
 }
 
-.container {
+.container,
+.container-fluid {
   margin-top: 90px;
 }
 
 #burgers h1 {
   font-weight: 900;
 }
-
-/* .card {
-  height: 590px!important;
-} */
-/* #burgers .burger-card {
-  background-color: #F8F8F8;
-} */
-
