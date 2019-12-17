@@ -1,28 +1,38 @@
 var connection = require("../config/connection.js");
 
-const orm = {
-  // Helper function to convert object key/value pairs to SQL syntax
-  objToSql: function(ob) {
-    const arr = [];
-  
-    // loop through the keys and push the key/value as a string int arr
-    for (let [key, value] of Object.entries(ob)) {
-      // var value = ob[key];
-      // check to skip hidden properties
-      console.log(`${key} and ${value}`)
-      // if (Object.hasOwnProperty(key)) {
-      //   // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
-      // } 
-      if (typeof value === "string") {
-        value = "'" + value + "'";
-      }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
-      arr.push(`${key}=${value}`);
+// Helper function to convert object key/value pairs to SQL syntax
+function objToSql(ob) {
+  const arr = [];
+
+  // loop through the keys and push the key/value as a string int arr
+  for (let [key, value] of Object.entries(ob)) {
+    // var value = ob[key];
+    // check to skip hidden properties
+    console.log(`${key} and ${value}`)
+    // if (Object.hasOwnProperty(key)) {
+    //   // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+    // } 
+    if (typeof value === "string") {
+      value = "'" + value + "'";
     }
-    console.log(arr);
-    return arr.toString();
-  },
+    // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+    // e.g. {sleepy: true} => ["sleepy=true"]
+    arr.push(`${key}=${value}`);
+  }
+  console.log(arr);
+  return arr.toString();
+}
+function printQuestionMarks(num) {
+  const arr = [];
+
+  for (let i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
+
+const orm = {
   all: function(table) {
     return new Promise((resolve, reject) => {
       const query = `SELECT * FROM ${table}`;
@@ -37,9 +47,12 @@ const orm = {
   },
   create: function(table, cols, vals) {
     return new Promise((resolve, reject) => {
-      const query = 
-      `INSERT INTO ${table} (${cols.toString()}) VALUES ("${vals.toString()}")`;
-      connection.query(query, (err, result, fields) => {
+      let query = 
+      `INSERT INTO ${table} (${cols.toString()}) VALUES (`; 
+      query += printQuestionMarks(vals.length);
+      query += ')';
+      console.log(query);
+      connection.query(query, vals, (err, result, fields) => {
         if(err) {
           console.log(err);
           reject(err);
@@ -51,7 +64,7 @@ const orm = {
   update: function(table, colValsObj, condition) {
     return new Promise((resolve, reject) => {
       const query = 
-      `UPDATE ${table} SET ${this.objToSql(colValsObj)} WHERE ${condition}`;
+      `UPDATE ${table} SET ${objToSql(colValsObj)} WHERE ${condition}`;
       connection.query(query, (err, result, fields) => {
         if(err) {
           console.log(err);

@@ -35,3 +35,7 @@ body {
     left: 0!important;
   }
 }
+
+.active {
+  background-color: #ffd200!important;
+}

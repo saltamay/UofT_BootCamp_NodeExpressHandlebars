@@ -95,6 +95,52 @@ function showModal() {
   $('#byobModal').modal('toggle');
 }
 
+async function handleBurgerSubmit() {
+
+  const checkboxes = document.querySelectorAll('.form-check-input');
+  
+  let toppings = [];
+  checkboxes.forEach(checkbox => {
+    if(checkbox.checked) {
+      toppings.push(checkbox.value);
+    }
+  });
+  toppings = toppings.join(', ');
+  
+  let burger_info = document.querySelector('.btn.active p').innerText;
+  burger_info += `\nToppings: ${toppings}`;
+
+  const img_url = document.querySelector('.btn.active img').getAttribute('src');
+  
+  const burger_name = document.querySelector('input[type="text"]').value;
+  
+  const data = {
+    burger_name: burger_name,
+    burger_info: burger_info,
+    img_url: img_url,
+    devoured: true
+  }
+
+  try {
+    const res = await fetch(`/api/burgers`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      window.location.replace('/devour');
+    }
+  } catch (error) {
+    if(error) {
+      console.log(error);
+      throw error;
+    }
+  }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(showModal, 3000);
 })
