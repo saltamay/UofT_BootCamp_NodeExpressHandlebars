@@ -44,8 +44,11 @@ In this assignment, we are assigned to create a CRUD app with MySQL, Node, Expre
 
 ## Getting Started
 
+Go to https://uoft-bootcamp-eatdaburger.herokuapp.com/ and play around :)
 
 ## Custom Design and Demo
+
+![Custom Demo](public/assets/images/demo.gif?raw=true)
 
 ## Development Strategy
 
@@ -202,14 +205,6 @@ All the recommended files and directories from the steps above should look like 
 ### Minimum Requirements
 
 Attempt to complete homework assignment as described in instructions. If unable to complete certain portions, please pseudocode these portions to describe what remains to be completed. Hosting on Heroku and adding a README.md are required for this homework. In addition, add this homework to your portfolio, more information can be found below.
-
-
-### Hosting on Heroku
-
-Now that we have a backend to our applications, we use Heroku for hosting. Please note that while **Heroku is free**, it will request credit card information if you have more than 5 applications at a time or are adding a database.
-
-Please see [Heroku’s Account Verification Information](https://devcenter.heroku.com/articles/account-verification) for more details.
-
 
 ### Bonus
 
